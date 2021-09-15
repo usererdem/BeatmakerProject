@@ -6,20 +6,23 @@
 
 body {
   font-family: sans-serif;
-  
 }
 
-i,svg {
+i,
+svg {
   pointer-events: none;
 }
 
 h1 {
   padding: 5px;
 }
-.kick-pad,.snare-pad,.hihat-pad {
+.kick-pad,
+.snare-pad,
+.hihat-pad {
   width: 3.5rem;
   height: 3.5rem;
   margin: 1rem 0.5rem;
+  border-radius: 0.2rem;
   cursor: pointer;
 }
 
@@ -47,7 +50,9 @@ h1 {
   background: hsl(212, 51%, 45%);
 }
 
-.hihat-track,.snare-track,.kick-track {
+.hihat-track,
+.snare-track,
+.kick-track {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -56,12 +61,15 @@ h1 {
 }
 
 .grid-container {
-  
-  margin: 30px auto;
-  
+  width: 1200px;
+  margin: 10px auto;
+  border: 2px;
+  border-radius: 1rem;
+  background-image: linear-gradient(135deg, #f2a65a, #772f1a);
+
   grid-template-rows: 600px 300px;
   grid-template-columns: 1fr 3fr;
-  
+
   display: grid;
 }
 
@@ -70,9 +78,12 @@ h1 {
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  padding-right: 2rem;
 }
 
-.kick,.snare,.hihat {
+.kick,
+.snare,
+.hihat {
   display: flex;
 }
 
@@ -113,10 +124,18 @@ select {
   padding: 1rem;
   font-size: 1rem;
   min-width: 120px;
+  background-color: #1c83a3;
+  color: aliceblue;
+  border-radius: 0.3rem;
+  transition: all 0.3s;
+}
+
+select:hover {
+  transform: translateY(-2px);
 }
 
 .mute.active {
-  background:gray;
+  background: gray;
 }
 
 .tempo {
@@ -129,22 +148,22 @@ select {
   margin: 1rem 0rem;
   width: 100%;
   position: relative;
-  background:hsl(0, 0%, 35%);
+  background: hsl(0, 0%, 35%);
   cursor: pointer;
-  border-radius: 1rem; 
+  border-radius: 1rem;
 }
 
-input[type=range]{
+input[type="range"] {
   -webkit-appearance: none;
 }
 
-input[type=range]::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    border: none;
-    height: 16px;
-    width: 16px;
-    border-radius: 50%;
-    background: white;
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
 }
 
 .tempo p {
@@ -166,8 +185,8 @@ input[type=range]::-webkit-slider-thumb {
 @keyframes playTrack {
   from {
     transform: scale(1);
-  } to {
+  }
+  to {
     transform: scale(1.2);
   }
 }
-
