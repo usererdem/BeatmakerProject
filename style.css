@@ -6,13 +6,16 @@
 
 body {
   font-family: sans-serif;
-  background-color: rgb(49, 49, 83);
+  
 }
 
 i,svg {
   pointer-events: none;
 }
 
+h1 {
+  padding: 5px;
+}
 .kick-pad,.snare-pad,.hihat-pad {
   width: 3.5rem;
   height: 3.5rem;
@@ -52,12 +55,21 @@ i,svg {
   margin-top: 5rem;
 }
 
+.grid-container {
+  
+  margin: 30px auto;
+  
+  grid-template-rows: 600px 300px;
+  grid-template-columns: 1fr 3fr;
+  
+  display: grid;
+}
+
 .sequencer {
   display: flex;
-  min-height: 100vh;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .kick,.snare,.hihat {
@@ -70,6 +82,7 @@ i,svg {
   align-items: center;
   flex: 1;
   margin: 0 2rem;
+  min-width: 280px;
 }
 
 .controls button {
@@ -99,6 +112,7 @@ i,svg {
 select {
   padding: 1rem;
   font-size: 1rem;
+  min-width: 120px;
 }
 
 .mute.active {
@@ -106,8 +120,7 @@ select {
 }
 
 .tempo {
-  margin: 3rem;
-  width: 30%;
+  margin: 2rem;
 }
 
 .tempo-slider {
@@ -138,6 +151,16 @@ input[type=range]::-webkit-slider-thumb {
   font-size: 1.5rem;
   margin: 2rem;
   text-align: center;
+}
+
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.piano {
+  grid-column: 1 / -1;
 }
 
 @keyframes playTrack {
