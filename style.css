@@ -5,7 +5,7 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
 i,
@@ -15,16 +15,58 @@ svg {
 
 h1 {
   padding: 5px;
+  font-weight: 400;
 }
 
 main {
   min-height: 100vh;
-  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  background: linear-gradient(to right top, #0074b7, #003b73);
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+/* Intro Page */
+.intro {
+  background: #003b73;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.slider {
+  background: #60a3d9;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  transform: translateY(100%);
+}
+
+.intro-text {
+  color: rgb(227, 242, 255);
+  font-size: 2rem;
+}
+
+.hide {
+  background: #003b73;
+  overflow: hidden;
+}
+
+.hide span {
+  transform: translateY(100%);
+  display: inline-block;
+}
+
+/* Pads */
 .kick-pad,
 .snare-pad,
 .hihat-pad {
@@ -66,7 +108,6 @@ main {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  
 }
 
 .kick-track {
@@ -98,6 +139,7 @@ main {
 
 .glass-box {
   z-index: 2;
+  position: fixed;
 }
 
 .circle1,
