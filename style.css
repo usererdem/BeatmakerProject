@@ -314,8 +314,50 @@ input[type="range"]::-webkit-slider-thumb {
   );
   border-radius: 2rem;
 }
+
+/* Piano section */
+
 .piano {
   grid-column: 1 / -1;
+  display: flex;
+  padding: 2rem;
+}
+
+.key {
+  height: calc(var(--width) * 4);
+  width: var(--width);
+}
+
+.white {
+  background-color: white;
+  --width: 50px;
+  border: 1px solid #333;
+}
+
+.white.active {
+  background-color: #ccc;
+}
+
+.black {
+  background-color: black;
+  --width: 30px;
+  margin-left: calc(var(--width) / -2);
+  margin-right: calc(var(--width) / -2);
+  z-index: 2;
+}
+
+.black.active {
+  background-color: #333;
+}
+
+.reverb {
+  width: 2rem;
+  height: 2rem;
+  background-color: red;
+}
+
+.reverb.active {
+  background-color: green;
 }
 
 @keyframes playTrack {

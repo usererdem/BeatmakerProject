@@ -164,3 +164,73 @@ drumKit.tempoSlider.addEventListener("input", function (e) {
 drumKit.tempoSlider.addEventListener("change", function (e) {
   drumKit.updateTempo(e);
 });
+
+///////////////// Piano App //////////////////////
+const WHITE_KEYS = ["z", "x", "c", "v", "b", "n", "m"];
+const BLACK_KEYS = ["s", "d", "g", "h", "j"];
+const SPACE = [" "];
+
+const keys = document.querySelectorAll(".key");
+const whiteKeys = document.querySelectorAll(".key.white");
+const blackKeys = document.querySelectorAll(".key.black");
+const reverbButton = document.querySelector("#reverb");
+
+
+/* ---------------Event Lısteners--------------- */
+keys.forEach((key) => {
+  key.addEventListener("click", () => playNote(key));
+});
+
+reverbButton.addEventListener('click', function() {
+  reverbButton.classList.toggle('active')
+})
+
+document.addEventListener("keydown", (e) => {
+  if (e.repeat) return;
+  const key = e.key;
+  const whiteKeyIndex = WHITE_KEYS.indexOf(key);
+  const blackKeyIndex = BLACK_KEYS.indexOf(key);
+
+  if (whiteKeyIndex > -1) playNote(whiteKeys[whiteKeyIndex]);
+  if (blackKeyIndex > -1) playNote(blackKeys[blackKeyIndex]);
+});
+
+document.addEventListener("keyup", (e) => {
+  if(!reverbButton.classList.contains("active")){
+    
+    const key = e.key;
+    console.log(key);
+    const whiteKeyIndex = WHITE_KEYS.indexOf(key);
+    const blackKeyIndex = BLACK_KEYS.indexOf(key);
+
+    if (whiteKeyIndex > -1) pauseNote(whiteKeys[whiteKeyIndex]);
+    if (blackKeyIndex > -1) pauseNote(blackKeys[blackKeyIndex]);
+  }
+  });
+
+/* ------------------Functions------------------- */
+function playNote(key) {
+  const noteAudio = document.getElementById(key.dataset.note);
+  noteAudio.currentTime = 0;
+  noteAudio.play();
+  key.classList.add("active");
+
+  noteAudio.addEventListener("ended", () => {
+    key.classList.remove("active");
+  });
+
+  /* time = 1000;
+  setTimeout(() => {
+    noteAudio.pause();
+    key.classList.remove("active");
+  }, time); */
+}
+
+function pauseNote(key) {
+  const noteAudio = document.getElementById(key.dataset.note);
+  time = 1000;
+  setTimeout(() => {
+    noteAudio.pause();
+  }, time);
+  key.classList.remove("active");
+}
