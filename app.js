@@ -166,8 +166,8 @@ drumKit.tempoSlider.addEventListener("change", function (e) {
 });
 
 ///////////////// Piano App //////////////////////
-const WHITE_KEYS = ["z", "x", "c", "v", "b", "n", "m"];
-const BLACK_KEYS = ["s", "d", "g", "h", "j"];
+const WHITE_KEYS = ["Z", "X", "C", "V", "B", "N", "M", "R", "T", "Y", "U", "I", "O", "P"];
+const BLACK_KEYS = ["S", "D", "G", "H", "J", "5", "6", "8", "9", "0"];
 const SPACE = [" "];
 
 const keys = document.querySelectorAll(".key");
@@ -187,7 +187,7 @@ reverbButton.addEventListener('click', function() {
 
 document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
-  const key = e.key;
+  const key = e.key.toUpperCase();
   const whiteKeyIndex = WHITE_KEYS.indexOf(key);
   const blackKeyIndex = BLACK_KEYS.indexOf(key);
 
@@ -198,7 +198,7 @@ document.addEventListener("keydown", (e) => {
 document.addEventListener("keyup", (e) => {
   if(!reverbButton.classList.contains("active")){
     
-    const key = e.key;
+    const key = e.key.toUpperCase();
     console.log(key);
     const whiteKeyIndex = WHITE_KEYS.indexOf(key);
     const blackKeyIndex = BLACK_KEYS.indexOf(key);

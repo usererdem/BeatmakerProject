@@ -26,7 +26,9 @@ main {
   align-items: center;
 }
 
-/* Intro Page */
+/* -------------------------------------------------------------- */
+/* -------------------- INTRO PAGE ANIMATION --------------------*/
+/* ------------------------------------------------------------ */
 .intro {
   background: #003b73;
   position: fixed;
@@ -66,41 +68,70 @@ main {
   display: inline-block;
 }
 
-/* Pads */
-.kick-pad,
-.snare-pad,
-.hihat-pad {
-  width: 3.5rem;
-  height: 3.5rem;
-  margin: 1rem 0.5rem;
-  border-radius: 0.2rem;
-  cursor: pointer;
+/* ------------------------------------------------------------- */
+/* -------------------------- LAYOUT -------------------------- */
+/* ----------------------------------------------------------- */
+/* Base Column and Row Layout */
+.glass-box {
+  z-index: 2;
+  position: fixed;
+  margin: 0 1rem;
 }
 
-.kick-pad {
-  background: hsla(0, 22%, 10%, 0.616);
+.grid-container {
+  max-width: 1200px;
+  margin: 10px auto;
+  border: 2px;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  backdrop-filter: blur(2rem);
+
+  display: grid;
+  /* grid-template-rows: 500px 300px;
+  grid-template-columns: minmax(10rem, 1fr) minmax(20rem, 1fr) minmax(20rem, 1fr) minmax(10rem, 1fr) minmax(10rem, 1fr);
+  grid-template-areas: "controls drums drums drums drums"
+  "piano piano piano trombone trombone"; */
+  grid-template: 
+  "controls drums drums drums drums" 500px
+  "piano piano piano trombone trombone" 300px
+  / minmax(10rem, 1fr) minmax(20rem, 1fr) minmax(20rem, 1fr) minmax(10rem, 1fr) minmax(10rem, 1fr);
+
 }
 
-.snare-pad {
-  background: hsla(0, 22%, 10%, 0.616);
+.controls-container {
+  grid-area: controls;
+}
+.drums { 
+  grid-area: drums;
+}
+.piano {
+  grid-area: piano;
+  display: flex;
+  padding: 2rem;
 }
 
-.hihat-pad {
-  background: hsla(0, 22%, 10%, 0.616);
+.key-text {
+  padding-top: calc(var(--width) * 4 - 25px);
+  padding-left: calc(var(--width)  - 18px);
 }
 
-.kick-pad.active {
-  background: hsl(0, 51%, 45%);
+.trombone {
+  grid-area: trombone;
 }
 
-.snare-pad.active {
-  background: hsl(123, 51%, 45%);
+.sequencer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  padding-right: 2rem;
 }
 
-.hihat-pad.active {
-  background: hsl(212, 51%, 45%);
-}
-
+/* Drums Section Elements Layout */
 .hihat-track,
 .snare-track,
 .kick-track {
@@ -119,67 +150,7 @@ main {
   margin-top: 5rem;
 }
 
-.grid-container {
-  max-width: 1200px;
-  margin: 10px auto;
-  border: 2px;
-  border-radius: 1rem;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
-  border-radius: 2rem;
-  backdrop-filter: blur(2rem);
-
-  display: grid;
-  grid-template-rows: 500px 300px;
-  grid-template-columns: 1fr 3fr;
-}
-
-.glass-box {
-  z-index: 2;
-  position: fixed;
-}
-
-.circle1,
-.circle2 {
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.3)
-  );
-  height: 20rem;
-  width: 20rem;
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-}
-
-.circle1 {
-  top: 3%;
-  right: 13%;
-}
-
-.circle2 {
-  bottom: 2%;
-  left: 10%;
-}
-
-.sequencer {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  padding-right: 2rem;
-}
-
-.kick,
-.snare,
-.hihat {
-  display: flex;
-}
-
+/* Mute Button,Selection Button Layout */
 .controls {
   display: flex;
   justify-content: space-between;
@@ -189,20 +160,33 @@ main {
   min-width: 280px;
 }
 
-.controls button {
-  padding: 1rem;
-  border: none;
-  background: hsl(0, 0%, 35%);
-  color: white;
-  font-size: 1rem;
-  cursor: pointer;
-  transition: all 0.5s ease;
+.kick,
+.snare,
+.hihat {
+  display: flex;
 }
 
-.pad {
-  transition: all 0.5s ease;
+/* -------------------------------------------------------------- */
+/* -------------------------- STYLING -------------------------- */
+/* ------------------------------------------------------------ */
+
+/* ----- Controls Section Styling ----- */
+/* Container Styling */
+.controls-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
 }
 
+/* Play Button Styling */
 .play {
   padding: 1rem 2rem;
   font-size: 1.5rem;
@@ -214,6 +198,61 @@ main {
   border-radius: 0.3rem;
 }
 
+/* Tempo Slider Styling */
+.tempo {
+  margin: 2rem;
+}
+
+.tempo-slider {
+  padding: 0.2rem;
+  -webkit-appearance: none;
+  margin: 1rem 0rem;
+  width: 100%;
+  position: relative;
+  background: hsl(0, 0%, 35%);
+  cursor: pointer;
+  border-radius: 1rem;
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  background: white;
+}
+/* Tempo Text Styling */
+.tempo p {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* ----- Drums Section Styling ----- */
+/* Mute Button Styling */
+.controls button {
+  padding: 1rem;
+  border: none;
+  background: hsl(0, 0%, 35%);
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.5s ease;
+}
+
+.mute.active {
+  background: gray;
+}
+
+/* Sound Selection Styling */
 select {
   padding: 1rem 3rem 1rem 1rem;
   font-size: 1rem;
@@ -263,69 +302,47 @@ option {
   transform: translateY(-2px);
 }
 
-.mute.active {
-  background: gray;
+/* Pads Styling*/
+.pad {
+  transition: all 0.5s ease;
 }
 
-.tempo {
-  margin: 2rem;
-}
-
-.tempo-slider {
-  padding: 0.2rem;
-  -webkit-appearance: none;
-  margin: 1rem 0rem;
-  width: 100%;
-  position: relative;
-  background: hsl(0, 0%, 35%);
+.kick-pad,
+.snare-pad,
+.hihat-pad {
+  width: 3.5rem;
+  height: 3.5rem;
+  margin: 1rem 0.5rem;
+  border-radius: 0.2rem;
   cursor: pointer;
-  border-radius: 1rem;
 }
 
-input[type="range"] {
-  -webkit-appearance: none;
+.kick-pad {
+  background: hsla(0, 22%, 10%, 0.616);
 }
 
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  border: none;
-  height: 16px;
-  width: 16px;
-  border-radius: 50%;
-  background: white;
+.snare-pad {
+  background: hsla(0, 22%, 10%, 0.616);
 }
 
-.tempo p {
-  display: flex;
-  flex-direction: column;
-  font-size: 1.5rem;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
+.hihat-pad {
+  background: hsla(0, 22%, 10%, 0.616);
 }
 
-.controls-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.7),
-    rgba(255, 255, 255, 0.3)
-  );
-  border-radius: 2rem;
+.kick-pad.active {
+  background: hsl(0, 51%, 45%);
 }
 
-/* Piano section */
-
-.piano {
-  grid-column: 1 / -1;
-  display: flex;
-  padding: 2rem;
+.snare-pad.active {
+  background: hsl(123, 51%, 45%);
 }
 
+.hihat-pad.active {
+  background: hsl(212, 51%, 45%);
+}
+
+/* ----- Piano Section Styling ----- */
+/* Keys */
 .key {
   height: calc(var(--width) * 4);
   width: var(--width);
@@ -347,22 +364,67 @@ input[type="range"]::-webkit-slider-thumb {
   margin-left: calc(var(--width) / -2);
   margin-right: calc(var(--width) / -2);
   z-index: 2;
+  color: white;
 }
 
 .black.active {
   background-color: #333;
 }
 
+/* Reverb Button and Text */
 .reverb {
   width: 2rem;
   height: 2rem;
-  background-color: red;
+  background-color: rgb(141, 9, 9);
+  margin-left: 1rem;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s all;
+}
+
+.reverb:hover {
+  transform: translateY(-2px);
+  box-shadow: rgba(88, 8, 8, 0.24) 0px 3px 8px;
+}
+
+.reverb:active {
+  transform: translateY(-0px);
+}
+.reverb-text {
+  margin-left: 0.3rem;
+  margin-top: 0.2rem;
 }
 
 .reverb.active {
-  background-color: green;
+  background-color: rgb(10, 105, 10);
 }
 
+/* ----- Circles Styling ----- */
+.circle1,
+.circle2 {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.circle1 {
+  top: 3%;
+  right: 13%;
+}
+
+.circle2 {
+  bottom: 2%;
+  left: 10%;
+}
+
+/* --- Animations --- */
 @keyframes playTrack {
   from {
     transform: scale(1);
