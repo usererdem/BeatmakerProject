@@ -296,8 +296,11 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 .tempo p {
+  display: flex;
+  flex-direction: column;
   font-size: 1.5rem;
-  margin: 2rem;
+  justify-content: center;
+  align-items: center;
   text-align: center;
 }
 
