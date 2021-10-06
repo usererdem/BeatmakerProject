@@ -429,13 +429,15 @@ option {
   border-radius: 1rem;
   position: relative;
   transition: all 0.2s;
+  
+  transform: translateY(-2px);
+  box-shadow: rgba(88, 8, 8, 0.24) 0px 3px 8px;
 }
 
 .trombone-button.active {
   background-color: #003b73;
-  transform: translateY(-2px);
-  box-shadow: rgba(88, 8, 8, 0.24) 0px 3px 8px;
-
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .trombone-text {
