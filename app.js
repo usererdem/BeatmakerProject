@@ -234,3 +234,34 @@ function pauseNote(key) {
   }, time);
   key.classList.remove("active");
 }
+
+///////////////// Trombone App //////////////////////
+const TROMBONE_KEYS = ["1", "2", "3", "4"];
+
+const tromboneKeys = document.querySelectorAll(".trombone-button");
+
+/* ---------------Event Lısteners--------------- */
+tromboneKeys.forEach((key) => {
+  key.addEventListener("click", () => playNote(key));
+});
+
+document.addEventListener("keydown", (e) => {
+  if (e.repeat) return;
+  const key = e.key.toUpperCase();
+  const tromboneKeyIndex = TROMBONE_KEYS.indexOf(key);
+  
+  if (tromboneKeyIndex > -1) playNote(tromboneKeys[tromboneKeyIndex]);
+});
+
+document.addEventListener("keyup", (e) => {
+  if(!reverbButton.classList.contains("active")){
+    
+    const key = e.key.toUpperCase();
+    console.log(key);
+    const whiteKeyIndex = WHITE_KEYS.indexOf(key);
+    const blackKeyIndex = BLACK_KEYS.indexOf(key);
+
+    if (whiteKeyIndex > -1) pauseNote(whiteKeys[whiteKeyIndex]);
+    if (blackKeyIndex > -1) pauseNote(blackKeys[blackKeyIndex]);
+  }
+  });
