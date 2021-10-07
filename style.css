@@ -261,6 +261,7 @@ select {
   color: aliceblue;
   border-radius: 0.3rem;
   transition: all 0.3s;
+  cursor: pointer;
 }
 
 option {
@@ -346,6 +347,7 @@ option {
 .key {
   height: calc(var(--width) * 4);
   width: var(--width);
+  cursor: pointer;
 }
 
 .white {
@@ -380,6 +382,7 @@ option {
   border-radius: 5px;
   border: none;
   transition: 0.3s all;
+  cursor: pointer;
 }
 
 .reverb:hover {
@@ -429,7 +432,7 @@ option {
   border-radius: 1rem;
   position: relative;
   transition: all 0.2s;
-  
+  cursor: pointer;
   transform: translateY(-2px);
   box-shadow: rgba(88, 8, 8, 0.24) 0px 3px 8px;
 }
