@@ -373,7 +373,7 @@ option {
   background-color: #333;
 }
 
-/* Reverb Button and Text */
+/* Reverb,Record Button and Text */
 .reverb {
   width: 2rem;
   height: 2rem;
@@ -385,21 +385,67 @@ option {
   cursor: pointer;
 }
 
-.reverb:hover {
+.record {
+  width: 2rem;
+  height: 2rem;
+  background-color: #333;
+  margin-left: 1rem;
+  border-radius: 15px;
+  border: none;
+  transition: 0.3s all;
+  cursor: pointer;
+}
+
+.reverb:hover,
+.record:hover,
+.play-record:hover {
   transform: translateY(-2px);
   box-shadow: rgba(88, 8, 8, 0.24) 0px 3px 8px;
 }
 
-.reverb:active {
+.reverb:active,
+.record:active,
+.play-record:active {
   transform: translateY(-0px);
 }
-.reverb-text {
+.reverb-text,
+.record-text {
   margin-left: 0.3rem;
-  margin-top: 0.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.play-text {
+  text-align: center;
 }
 
 .reverb.active {
   background-color: rgb(10, 105, 10);
+}
+
+.play-record {
+  width: 3rem;
+  height: 3rem;
+  background-color: transparent;
+  margin-left: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  transition: 0.3s all;
+  cursor: pointer;
+  position: relative;
+}
+.play-record::after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 5px;
+
+  border-top: 1.1rem solid transparent;
+  border-bottom: 1.1rem solid transparent;
+  border-left: 1.8rem solid #333;
 }
 
 /* ----- Trombone Section Styling ----- */
