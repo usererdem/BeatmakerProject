@@ -174,7 +174,7 @@ const keys = document.querySelectorAll(".key");
 const whiteKeys = document.querySelectorAll(".key.white");
 const blackKeys = document.querySelectorAll(".key.black");
 const reverbButton = document.querySelector("#reverb");
-
+const recordButton = document.querySelector('.record')
 
 /* ---------------Event Lısteners--------------- */
 keys.forEach((key) => {
@@ -184,6 +184,8 @@ keys.forEach((key) => {
 reverbButton.addEventListener('click', function() {
   reverbButton.classList.toggle('active')
 })
+
+recordButton.addEventListener('click', toggleRecording)
 
 document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
@@ -233,6 +235,10 @@ function pauseNote(key) {
     noteAudio.pause();
   }, time);
   key.classList.remove("active");
+}
+
+function toggleRecording() {
+  recordButton.classList.toggle('active')
 }
 
 ///////////////// Trombone App //////////////////////

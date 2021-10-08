@@ -383,7 +383,7 @@ option {
 .reverb {
   width: 2rem;
   height: 2rem;
-  background-color: rgb(141, 9, 9);
+  background-color: #333;
   margin-left: 1rem;
   border-radius: 5px;
   border: none;
@@ -457,6 +457,13 @@ option {
   background-color: rgb(10, 105, 10);
 }
 
+.record.active {
+  background-color: rgb(141, 9, 9);
+}
+
+.play-record:hover::after{
+  border-left: 1.8rem solid #003b73;
+}
 .play-record.active::after {
   border-left: 1.8rem solid green;
 }
