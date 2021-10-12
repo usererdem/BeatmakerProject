@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <title>Beatmaker</title>
+</head>
+
+<body>
+  <main>
+    <section class="glass-box">
+      <div class="grid-container">
+        <div class="controls-container">
+          <button class="play">Play</button>
+          <div class="tempo">
+            <input type="range" class="tempo-slider" max="300" min="20" value="150">
+            <p>Tempo: <span class="tempo-nr">150</span></p>
+          </div>
+        </div>
+        <div class="drums">
+          <div class="sequencer">
+            <div class="kick-track">
+              <div class="controls">
+                <h1>Kick</h1>
+                <button data-track="0" class="mute kick-volume">
+                  <i class="fas fa-volume-mute"></i>
+                </button>
+                <div class="custom-select">
+                  <select name="kick-select" id="kick-select">
+                    <option value="./sounds/1kick-drum-alorsdanse.mp3">Kick-1</option>
+                    <option value="./sounds/kick-classic.wav">Kick-2</option>
+                    <option value="./sounds/kick-808.wav">Kick-3</option>
+                    <option value="./sounds/kick-heavy.wav">Kick-4</option>
+                  </select>
+                  <span class="custom-arrow"></span>
+                </div>
+              </div>
+              <div class="kick">
+                <div class="pad kick-pad b0"></div>
+                <div class="pad kick-pad b1"></div>
+                <div class="pad kick-pad b2"></div>
+                <div class="pad kick-pad b3"></div>
+                <div class="pad kick-pad b4"></div>
+                <div class="pad kick-pad b5"></div>
+                <div class="pad kick-pad b6"></div>
+                <div class="pad kick-pad b7"></div>
+              </div>
+            </div>
+            <div class="snare-track">
+              <div class="controls">
+                <h1>Snare</h1>
+                <button data-track="1" class="mute snare-volume">
+                  <i class="fas fa-volume-mute"></i>
+                </button>
+                <div class="custom-select">
+                  <select name="snare-select" id="snare-select">
+                    <option value="./sounds/1handclap-alorsdanse.mp3">Snare-1</option>
+                    <option value="./sounds/snare-acoustic01.wav">Snare-2</option>
+                    <option value="./sounds/snare-808.wav">Snare-3</option>
+                    <option value="./sounds/snare-vinyl02.wav">Snare-4</option>
+                  </select>
+                  <span class="custom-arrow"></span>
+                </div>
+              </div>
+              <div class="snare">
+                <div class="pad snare-pad b0"></div>
+                <div class="pad snare-pad b1"></div>
+                <div class="pad snare-pad b2"></div>
+                <div class="pad snare-pad b3"></div>
+                <div class="pad snare-pad b4"></div>
+                <div class="pad snare-pad b5"></div>
+                <div class="pad snare-pad b6"></div>
+                <div class="pad snare-pad b7"></div>
+              </div>
+            </div>
+            <div class="hihat-track">
+              <div class="controls">
+                <h1>Hihat</h1>
+                <button data-track="2" class="mute hihat-volume">
+                  <i class="fas fa-volume-mute"></i>
+                </button>
+                <div class="custom-select">
+                  <select name="hihat-select" id="hihat-select">
+                    <option value="./sounds/hihat-acoustic01.wav">Hihat-1</option>
+                    <option value="./sounds/hihat-808.wav">Hihat-2</option>
+                    <option value="./sounds/hihat-plain.wav">Hihat-3</option>
+                  </select>
+                  <span class="custom-arrow"></span>
+                </div>
+              </div>
+              <div class="hihat">
+                <div class="pad hihat-pad b0"></div>
+                <div class="pad hihat-pad b1"></div>
+                <div class="pad hihat-pad b2"></div>
+                <div class="pad hihat-pad b3"></div>
+                <div class="pad hihat-pad b4"></div>
+                <div class="pad hihat-pad b5"></div>
+                <div class="pad hihat-pad b6"></div>
+                <div class="pad hihat-pad b7"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="piano">
+          <div data-note="1_c1" class="key white">
+            <p class="key-text">Z</p>
+          </div>
+          <div data-note="2_c-1" class="key black">
+            <p class="key-text">S</p>
+          </div>
+          <div data-note="3_d1" class="key white">
+            <p class="key-text">X</p>
+          </div>
+          <div data-note="4_d-1" class="key black">
+            <p class="key-text">D</p>
+          </div>
+          <div data-note="5_e1" class="key white">
+            <p class="key-text">C</p>
+          </div>
+          <div data-note="6_f1" class="key white">
+            <p class="key-text">V</p>
+          </div>
+          <div data-note="7_f-1" class="key black">
+            <p class="key-text">G</p>
+          </div>
+          <div data-note="8_g1" class="key white">
+            <p class="key-text">B</p>
+          </div>
+          <div data-note="9_g-1" class="key black">
+            <p class="key-text">H</p>
+          </div>
+          <div data-note="10_a1" class="key white">
+            <p class="key-text">N</p>
+          </div>
+          <div data-note="11_a-1" class="key black">
+            <p class="key-text">J</p>
+          </div>
+          <div data-note="12_b1" class="key white">
+            <p class="key-text">M</p>
+          </div>
+          <div data-note="13_c1" class="key white">
+            <p class="key-text">R</p>
+          </div>
+          <div data-note="14_c-1" class="key black">
+            <p class="key-text">5</p>
+          </div>
+          <div data-note="15_d1" class="key white">
+            <p class="key-text">T</p>
+          </div>
+          <div data-note="16_d-1" class="key black">
+            <p class="key-text">6</p>
+          </div>
+          <div data-note="17_e1" class="key white">
+            <p class="key-text">Y</p>
+          </div>
+          <div data-note="18_f1" class="key white">
+            <p class="key-text">U</p>
+          </div>
+          <div data-note="19_f-1" class="key black">
+            <p class="key-text">8</p>
+          </div>
+          <div data-note="20_g1" class="key white">
+            <p class="key-text">I</p>
+          </div>
+          <div data-note="21_g-1" class="key black">
+            <p class="key-text">9</p>
+          </div>
+          <div data-note="22_a1" class="key white">
+            <p class="key-text">O</p>
+          </div>
+          <div data-note="23_a-1" class="key black">
+            <p class="key-text">0</p>
+          </div>
+          <div data-note="24_b1" class="key white">
+            <p class="key-text">P</p>
+          </div>
+          <div class="reverb-div">
+            <button id="reverb" class="reverb"></button>
+            <p class="reverb-text">Reverb</p>
+            <button id="record" class="record"></button>
+            <p class="record-text">Record</p>
+            <button id="play-record" class="play-record"></button>
+            <p class="play-text">Play</p>
+          </div>
+        </div>
+
+        <div class="trombone">
+          <h2 class="trombone-h2">Trombone</h2>
+          <div class="button-area">
+            <div data-note="2_C-5" class="trombone-button">
+              <p class="trombone-text">1</p>
+            </div>
+            <div data-note="4_D-5" class="trombone-button">
+              <p class="trombone-text">2</p>
+            </div>
+            <div data-note="5_E5" class="trombone-button">
+              <p class="trombone-text">3</p>
+            </div>
+            <div data-note="7_F-5" class="trombone-button">
+              <p class="trombone-text">4</p>
+            </div>
+          </div>
+        </div>
+
+        <audio id="1_c1" src="notes/synth-pluck/1_C3.mp3"></audio>
+        <audio id="2_c-1" src="notes/synth-pluck/2_C-3.mp3"></audio>
+        <audio id="3_d1" src="notes/synth-pluck/3_D3.mp3"></audio>
+        <audio id="4_d-1" src="notes/synth-pluck/4_D-3.mp3"></audio>
+        <audio id="5_e1" src="notes/synth-pluck/5_E3.mp3"></audio>
+        <audio id="6_f1" src="notes/synth-pluck/6_F3.mp3"></audio>
+        <audio id="7_f-1" src="notes/synth-pluck/7_F-3.mp3"></audio>
+        <audio id="8_g1" src="notes/synth-pluck/8_G3.mp3"></audio>
+        <audio id="9_g-1" src="notes/synth-pluck/9_G-3.mp3"></audio>
+        <audio id="10_a1" src="notes/synth-pluck/10_A3.mp3"></audio>
+        <audio id="11_a-1" src="notes/synth-pluck/11_A-3.mp3"></audio>
+        <audio id="12_b1" src="notes/synth-pluck/12_B3.mp3"></audio>
+
+        <audio id="13_c1" src="notes/synth-pluck/13_C4.mp3"></audio>
+        <audio id="14_c-1" src="notes/synth-pluck/14_C-4.mp3"></audio>
+        <audio id="15_d1" src="notes/synth-pluck/15_D4.mp3"></audio>
+        <audio id="16_d-1" src="notes/synth-pluck/16_D-4.mp3"></audio>
+        <audio id="17_e1" src="notes/synth-pluck/17_E4.mp3"></audio>
+        <audio id="18_f1" src="notes/synth-pluck/18_F4.mp3"></audio>
+        <audio id="19_f-1" src="notes/synth-pluck/19_F-4.mp3"></audio>
+        <audio id="20_g1" src="notes/synth-pluck/20_G4.mp3"></audio>
+        <audio id="21_g-1" src="notes/synth-pluck/21_G-4.mp3"></audio>
+        <audio id="22_a1" src="notes/synth-pluck/22_A4.mp3"></audio>
+        <audio id="23_a-1" src="notes/synth-pluck/23_A-4.mp3"></audio>
+        <audio id="24_b1" src="notes/synth-pluck/24_B4.mp3"></audio>
+
+        <audio id="2_C-5" src="notes/trombone/2_C-5.mp3"></audio>
+        <audio id="4_D-5" src="notes/trombone/4_D-5.mp3"></audio>
+        <audio id="5_E5" src="notes/trombone/5_E5.mp3"></audio>
+        <audio id="7_F-5" src="notes/trombone/7_F-5.mp3"></audio>
+      </div>
+    </section>
+  </main>
+  <div class="circle1 circle-intro"></div>
+  <div class="circle2 circle-intro"></div>
+  
+  <!-- Intro Text with animation -->
+  <div class="intro">
+    <div class="intro-text">
+      <h1 class="hide"><span class="text">Create your music,</span></h1>
+      <h1 class="hide"><span class="text">Record and...</span></h1>
+      <h1 class="hide"><span class="text">...share!</span></h1>
+    </div>
+  </div>
+  <div class="slider"></div>
+
+  <!-- Beatmaker First Sounds -->
+  <audio src="./sounds/1kick-drum-alorsdanse.mp3" class="kick-sound"></audio>
+  <audio src="./sounds/1handclap-alorsdanse.mp3" class="snare-sound"></audio>
+  <audio src="./sounds/hihat-acoustic01.wav" class="hihat-sound"></audio>
+
+  <!-- gsap script -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"
+    integrity="sha512-UxP+UhJaGRWuMG2YC6LPWYpFQnsSgnor0VUF3BHdD83PS/pOpN+FYbZmrYN+ISX8jnvgVUciqP/fILOXDjZSwg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- fontawesome script-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"
+    integrity="sha512-Tn2m0TIpgVyTzzvmxLNuqbSJH3JP8jm+Cy3hvHrW7ndTDcJ1w5mBiksqDBb8GpE2ksktFvDB/ykZ0mDpsZj20w=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <!-- my js files -->
+  <script src="intro.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>
