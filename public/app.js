@@ -174,7 +174,15 @@ const keys = document.querySelectorAll(".key");
 const whiteKeys = document.querySelectorAll(".key.white");
 const blackKeys = document.querySelectorAll(".key.black");
 const reverbButton = document.querySelector("#reverb");
-const recordButton = document.querySelector('.record')
+const recordButton = document.querySelector('.record');
+const playButton = document.querySelector('.play-record')
+const saveButton = document.querySelector('.save-piano')
+const playButtonText = document.querySelector('.play-text')
+
+const keyMap = [...keys].reduce((map,key) => {
+  map[key.dataset.note] = key
+  return map
+}, {})
 
 let recordingStartTime
 let songNotes
@@ -230,14 +238,25 @@ function isRecording () {
 function startRecording() {
   recordingStartTime = Date.now()
   songNotes = []
+  playButton.classList.remove('show')
+  saveButton.classList.remove('show')
+  playButtonText.classList.remove('show')
 }
 
 function stopRecording() {
   playSong()
+  playButton.classList.add('show')
+  saveButton.classList.add('show')
+  playButtonText.classList.add('show')
 }
 
 function playSong() {
-  console.log(songNotes);
+  if (songNotes.length === 0) return
+  songNotes.forEach(note => {
+    setTimeout(() => {
+      playNote(keyMap[note.key])
+    }, note.startTime)
+  })
 }
 
 function playNote(key) {
