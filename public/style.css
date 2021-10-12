@@ -224,9 +224,19 @@ main {
   transition: 0.3s all;
 }
 
-.save-piano.show {
+.song-link {
+  padding: 1rem 0.5rem;
+  margin-top: 1rem;
+  opacity: 0;
+  transition: 0.3s all;
+  text-decoration: none;
+}
+
+.song-link.show,
+.save-piano.show  {
   opacity: 1;
 }
+
 
 input[type="range"] {
   -webkit-appearance: none;

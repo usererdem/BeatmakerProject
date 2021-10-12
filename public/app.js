@@ -281,7 +281,11 @@ function recordNote(note) {
   })
 }
 
-function saveSong() {}
+function saveSong() {
+  axios.post('/songs', {songNotes: songNotes}).then(res => {
+    console.log(res.data)
+  })
+}
 
 function pauseNote(key) {
   const noteAudio = document.getElementById(key.dataset.note);
