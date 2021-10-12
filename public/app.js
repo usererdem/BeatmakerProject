@@ -176,6 +176,9 @@ const blackKeys = document.querySelectorAll(".key.black");
 const reverbButton = document.querySelector("#reverb");
 const recordButton = document.querySelector('.record')
 
+let recordingStartTime
+let songNotes
+
 /* ---------------Event Lısteners--------------- */
 keys.forEach((key) => {
   key.addEventListener("click", () => playNote(key));
@@ -211,7 +214,34 @@ document.addEventListener("keyup", (e) => {
   });
 
 /* ------------------Functions------------------- */
+function toggleRecording() {
+  recordButton.classList.toggle('active')
+  if (isRecording()) {
+    startRecording()
+  } else {
+    stopRecording()
+  }
+}
+
+function isRecording () {
+  return recordButton != null && recordButton.classList.contains('active')
+}
+
+function startRecording() {
+  recordingStartTime = Date.now()
+  songNotes = []
+}
+
+function stopRecording() {
+  playSong()
+}
+
+function playSong() {
+  console.log(songNotes);
+}
+
 function playNote(key) {
+  if (isRecording()) recordNote(key.dataset.note)
   const noteAudio = document.getElementById(key.dataset.note);
   noteAudio.currentTime = 0;
   noteAudio.play();
@@ -228,6 +258,13 @@ function playNote(key) {
   }, time); */
 }
 
+function recordNote(note) {
+  songNotes.push({
+    key: note,
+    startTime: Date.now() - recordingStartTime
+  })
+}
+
 function pauseNote(key) {
   const noteAudio = document.getElementById(key.dataset.note);
   time = 1000;
@@ -235,10 +272,6 @@ function pauseNote(key) {
     noteAudio.pause();
   }, time);
   key.classList.remove("active");
-}
-
-function toggleRecording() {
-  recordButton.classList.toggle('active')
 }
 
 ///////////////// Trombone App //////////////////////
