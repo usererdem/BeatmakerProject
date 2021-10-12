@@ -309,7 +309,7 @@ document.addEventListener("keydown", (e) => {
   if (tromboneKeyIndex > -1) playNote(tromboneKeys[tromboneKeyIndex]);
 });
 
-document.addEventListener("keyup", (e) => {
+/* document.addEventListener("keyup", (e) => {
   if(!reverbButton.classList.contains("active")){
     
     const key = e.key.toUpperCase();
@@ -320,4 +320,4 @@ document.addEventListener("keyup", (e) => {
     if (whiteKeyIndex > -1) pauseNote(whiteKeys[whiteKeyIndex]);
     if (blackKeyIndex > -1) pauseNote(blackKeys[blackKeyIndex]);
   }
-  });
+  }); */
