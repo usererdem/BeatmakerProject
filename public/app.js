@@ -174,6 +174,7 @@ const keys = document.querySelectorAll(".key");
 const whiteKeys = document.querySelectorAll(".key.white");
 const blackKeys = document.querySelectorAll(".key.black");
 const reverbButton = document.querySelector("#reverb");
+
 const recordButton = document.querySelector('.record');
 const playButton = document.querySelector('.play-record')
 const saveButton = document.querySelector('.save-piano')
@@ -197,6 +198,8 @@ reverbButton.addEventListener('click', function() {
 })
 
 recordButton.addEventListener('click', toggleRecording)
+saveButton.addEventListener('click', saveSong)
+playButton.addEventListener('click', playSong)
 
 document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
@@ -269,12 +272,6 @@ function playNote(key) {
   noteAudio.addEventListener("ended", () => {
     key.classList.remove("active");
   });
-
-  /* time = 1000;
-  setTimeout(() => {
-    noteAudio.pause();
-    key.classList.remove("active");
-  }, time); */
 }
 
 function recordNote(note) {
@@ -283,6 +280,8 @@ function recordNote(note) {
     startTime: Date.now() - recordingStartTime
   })
 }
+
+function saveSong() {}
 
 function pauseNote(key) {
   const noteAudio = document.getElementById(key.dataset.note);
