@@ -68,6 +68,31 @@ main {
   display: inline-block;
 }
 
+/* ----- Circles Styling ----- */
+.circle1,
+.circle2 {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  z-index: 1;
+  border-radius: 50%;
+}
+
+.circle1 {
+  top: 3%;
+  right: 13%;
+}
+
+.circle2 {
+  bottom: 2%;
+  left: 10%;
+}
+
 /* ------------------------------------------------------------- */
 /* -------------------------- LAYOUT -------------------------- */
 /* ----------------------------------------------------------- */
@@ -524,31 +549,6 @@ option {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-/* ----- Circles Styling ----- */
-.circle1,
-.circle2 {
-  background: linear-gradient(
-    to right bottom,
-    rgba(255, 255, 255, 0.8),
-    rgba(255, 255, 255, 0.3)
-  );
-  height: 20rem;
-  width: 20rem;
-  position: absolute;
-  z-index: 1;
-  border-radius: 50%;
-}
-
-.circle1 {
-  top: 3%;
-  right: 13%;
-}
-
-.circle2 {
-  bottom: 2%;
-  left: 10%;
 }
 
 /* --- Animations --- */
