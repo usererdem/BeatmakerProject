@@ -14,7 +14,7 @@ class Drumkit {
     this.selects = document.querySelectorAll("select");
     this.muteBtns = document.querySelectorAll(".mute");
     this.tempoSlider = document.querySelector(".tempo-slider");
-    
+
     // Add default volume level in array, if you add new audio sound from HTML
     this.kickVolumeLevel = [1, 0.1, 0.1, 0.1];
     this.snareVolumeLevel = [1, 0.1, 0.1, 0.1];
@@ -52,6 +52,11 @@ class Drumkit {
   }
 
   start() {
+    // Default starting volume level
+    this.kickAudio.volume = 1;
+    this.snareAudio.volume = 1;
+    this.hihatAudio.volume = 0.1;
+    
     const interval = (60 / this.bpm) * 1000;
     //Check if it is playing
     if (this.isPlaying) {
