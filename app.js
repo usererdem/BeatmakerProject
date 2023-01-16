@@ -53,8 +53,6 @@ class Drumkit {
 
   start() {
     // Default starting volume level
-    this.kickAudio.volume = 1;
-    this.snareAudio.volume = 1;
     this.hihatAudio.volume = 0.1;
     
     const interval = (60 / this.bpm) * 1000;
