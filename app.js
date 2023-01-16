@@ -14,6 +14,11 @@ class Drumkit {
     this.selects = document.querySelectorAll("select");
     this.muteBtns = document.querySelectorAll(".mute");
     this.tempoSlider = document.querySelector(".tempo-slider");
+    
+    // Add default volume level in array, if you add new audio sound from HTML
+    this.kickVolumeLevel = [1, 0.1, 0.1, 0.1];
+    this.snareVolumeLevel = [1, 0.1, 0.1, 0.1];
+    this.hihatVolumeLevel = [0.1, 0.1, 0.1];
   }
 
   activePad() {
@@ -73,18 +78,29 @@ class Drumkit {
   changeSound(e) {
     const selectionName = e.target.name;
     const selectionValue = e.target.value;
+
     switch (selectionName) {
       case "kick-select":
         this.kickAudio.src = selectionValue;
+        this.setVolume(e, this.kickVolumeLevel, this.kickAudio);
         break;
       case "snare-select":
         this.snareAudio.src = selectionValue;
+        this.setVolume(e, this.snareVolumeLevel, this.snareAudio);
         break;
       case "hihat-select":
         this.hihatAudio.src = selectionValue;
+        this.setVolume(e, this.hihatVolumeLevel, this.hihatAudio);
         break;
     }
   }
+
+  setVolume(e, volumeLevelArray, instrument) {
+    for (let i = 0; i < volumeLevelArray.length; i++) {
+      if (e.target.children[i].value === e.target.value) instrument.volume = volumeLevelArray[i];
+    }
+  }
+
   mute(e) {
     const muteIndex = e.target.getAttribute("data-track");
     e.target.classList.toggle("active");
@@ -114,6 +130,7 @@ class Drumkit {
       }
     }
   }
+
   changeTempo(e) {
     const tempoText = document.querySelector(".tempo-nr");
     tempoText.innerText = e.target.value;
@@ -175,29 +192,29 @@ const whiteKeys = document.querySelectorAll(".key.white");
 const blackKeys = document.querySelectorAll(".key.black");
 const reverbButton = document.querySelector("#reverb");
 
-const recordButton = document.querySelector('.record');
-const playButton = document.querySelector('.play-record')
-const playButtonText = document.querySelector('.play-text')
+const recordButton = document.querySelector(".record");
+const playButton = document.querySelector(".play-record");
+const playButtonText = document.querySelector(".play-text");
 
-const keyMap = [...keys].reduce((map,key) => {
-  map[key.dataset.note] = key
-  return map
-}, {})
+const keyMap = [...keys].reduce((map, key) => {
+  map[key.dataset.note] = key;
+  return map;
+}, {});
 
-let recordingStartTime
-let songNotes
+let recordingStartTime;
+let songNotes;
 
 /* ---------------Event Lısteners--------------- */
 keys.forEach((key) => {
   key.addEventListener("click", () => playNote(key));
 });
 
-reverbButton.addEventListener('click', function() {
-  reverbButton.classList.toggle('active')
-})
+reverbButton.addEventListener("click", function () {
+  reverbButton.classList.toggle("active");
+});
 
-recordButton.addEventListener('click', toggleRecording)
-playButton.addEventListener('click', playSong)
+recordButton.addEventListener("click", toggleRecording);
+playButton.addEventListener("click", playSong);
 
 document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
@@ -210,8 +227,7 @@ document.addEventListener("keydown", (e) => {
 });
 
 document.addEventListener("keyup", (e) => {
-  if(!reverbButton.classList.contains("active")){
-    
+  if (!reverbButton.classList.contains("active")) {
     const key = e.key.toUpperCase();
     console.log(key);
     const whiteKeyIndex = WHITE_KEYS.indexOf(key);
@@ -220,45 +236,45 @@ document.addEventListener("keyup", (e) => {
     if (whiteKeyIndex > -1) pauseNote(whiteKeys[whiteKeyIndex]);
     if (blackKeyIndex > -1) pauseNote(blackKeys[blackKeyIndex]);
   }
-  });
+});
 
 /* ------------------Functions------------------- */
 function toggleRecording() {
-  recordButton.classList.toggle('active')
+  recordButton.classList.toggle("active");
   if (isRecording()) {
-    startRecording()
+    startRecording();
   } else {
-    stopRecording()
+    stopRecording();
   }
 }
 
-function isRecording () {
-  return recordButton != null && recordButton.classList.contains('active')
+function isRecording() {
+  return recordButton != null && recordButton.classList.contains("active");
 }
 function startRecording() {
-  recordingStartTime = Date.now()
-  songNotes = []
-  playButton.classList.remove('show')
-  playButtonText.classList.remove('show')
+  recordingStartTime = Date.now();
+  songNotes = [];
+  playButton.classList.remove("show");
+  playButtonText.classList.remove("show");
 }
 
 function stopRecording() {
-  playSong()
-  playButton.classList.add('show')
-  playButtonText.classList.add('show')
+  playSong();
+  playButton.classList.add("show");
+  playButtonText.classList.add("show");
 }
 
 function playSong() {
-  if (songNotes.length === 0) return
-  songNotes.forEach(note => {
+  if (songNotes.length === 0) return;
+  songNotes.forEach((note) => {
     setTimeout(() => {
-      playNote(keyMap[note.key])
-    }, note.startTime)
-  })
+      playNote(keyMap[note.key]);
+    }, note.startTime);
+  });
 }
 
 function playNote(key) {
-  if (isRecording()) recordNote(key.dataset.note)
+  if (isRecording()) recordNote(key.dataset.note);
   const noteAudio = document.getElementById(key.dataset.note);
   noteAudio.currentTime = 0;
   noteAudio.play();
@@ -278,8 +294,8 @@ function playNote(key) {
 function recordNote(note) {
   songNotes.push({
     key: note,
-    startTime: Date.now() - recordingStartTime
-  })
+    startTime: Date.now() - recordingStartTime,
+  });
 }
 
 function pauseNote(key) {
@@ -305,7 +321,7 @@ document.addEventListener("keydown", (e) => {
   if (e.repeat) return;
   const key = e.key.toUpperCase();
   const tromboneKeyIndex = TROMBONE_KEYS.indexOf(key);
-  
+
   if (tromboneKeyIndex > -1) playNote(tromboneKeys[tromboneKeyIndex]);
 });
 
