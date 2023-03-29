@@ -34,5 +34,5 @@ usererdem.github.io/beatmakerproject/
 ### Playing Recorded Audio
 - After recording an audio, the Play button will appear. You can play the audio recorded by clicking the play button as many times as you want.
 
-### Trombone Sounds
+## Trombone Sounds
 - Finally, on the bottom right part of the application, you can create trombone sounds. You can use the numbers written on top to play the trombone sound or you can click with the mouse.
